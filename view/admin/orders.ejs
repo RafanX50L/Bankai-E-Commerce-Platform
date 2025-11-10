@@ -495,6 +495,331 @@
         }
 
     </style>
+    <style>
+        /* ===== Enhanced Order Details Color Scheme ===== */
+
+/* Order Container Base Styles */
+.order-container {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    background: #1a1f2e;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #2d3548;
+}
+
+/* Order Title */
+.order-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #ffffff;
+    padding-left: 8px;
+    border-left: 4px solid #6366f1;
+}
+
+/* Price Display Styles - More Readable Colors */
+.order-container h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Subtotal - Neutral Blue */
+.order-container h5:has-text("Sub Total"),
+.order-container h5[style*="color: yellow"] {
+    color: #60a5fa !important;
+    background-color: rgba(96, 165, 250, 0.1);
+    border-left: 3px solid #60a5fa;
+}
+
+/* Coupon Discount - Vibrant Purple */
+.order-container h5[style*="color: red"]:first-of-type {
+    color: #a78bfa !important;
+    background-color: rgba(167, 139, 250, 0.1);
+    border-left: 3px solid #a78bfa;
+}
+
+/* Offer Discount - Orange Accent */
+.order-container h5[style*="color: red"]:last-of-type {
+    color: #fb923c !important;
+    background-color: rgba(251, 146, 60, 0.1);
+    border-left: 3px solid #fb923c;
+}
+
+/* Delivery Charge - Teal */
+.order-container h5[style*="color: rgb(247, 217, 119)"] {
+    color: #2dd4bf !important;
+    background-color: rgba(45, 212, 191, 0.1);
+    border-left: 3px solid #2dd4bf;
+}
+
+/* Total Price - Bright Green */
+.order-container h5[style*="color: rgb(10, 247, 10)"] {
+    color: #4ade80 !important;
+    background-color: rgba(74, 222, 128, 0.15);
+    border-left: 3px solid #4ade80;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Return Status Badges - Enhanced */
+.cancel-btn {
+    border: 2px solid #fbbf24;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: #1a1f2e;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
+}
+
+.approve1-btn {
+    border: 2px solid #10b981;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+}
+
+.approve1-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.reject1-btn {
+    border: 2px solid #ef4444;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    transition: all 0.3s ease;
+}
+
+.reject1-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+/* Approve/Reject Action Buttons */
+.btn-success.approve-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    padding: 8px 20px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-success.approve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.btn-danger.reject-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    border: none;
+    padding: 8px 20px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-danger.reject-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Product Card Enhanced */
+.product-card {
+    background: linear-gradient(135deg, #1f2937 0%, #1a1f2e 100%);
+    border: 1px solid #374151;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+    border-color: #6366f1;
+}
+
+/* Product Info Text Colors */
+.product-title {
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #9ca3af;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.info-value {
+    color: #e5e7eb;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* Price Styling in Product Cards */
+.price {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.price-value {
+    color: #4ade80;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Delivery Information */
+.delivery-info {
+    background: rgba(99, 102, 241, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    margin-top: 20px;
+}
+
+.address-container {
+    background-color: rgba(55, 65, 81, 0.5);
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px solid #4b5563;
+}
+
+.phone-number {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.phone-number:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+/* Divider Line */
+.divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, #6366f1, transparent);
+    margin: 16px 0;
+}
+
+/* Product Image Enhancement */
+.product-image {
+    border-radius: 10px;
+    border: 2px solid #374151;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    border-color: #6366f1;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Status Button Colors in Table */
+.btn-outline-info {
+    color: #60a5fa;
+    border-color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.1);
+}
+
+.btn-outline-success {
+    color: #4ade80;
+    border-color: #4ade80;
+    background-color: rgba(74, 222, 128, 0.1);
+}
+
+.btn-outline-warning {
+    color: #fbbf24;
+    border-color: #fbbf24;
+    background-color: rgba(251, 191, 36, 0.1);
+}
+
+.btn-outline-danger {
+    color: #ef4444;
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Action Buttons Enhanced */
+.alert-btn, .edit-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.alert-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.alert-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.alert-btn.newicon::after {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.edit-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+}
+
+/* No Orders Message Enhancement */
+.text-center div[style*="background-color: #f8d7da"] {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%) !important;
+    border: 2px solid #ef4444 !important;
+    color: #fca5a5 !important;
+}
+
+.text-center div[style*="background-color: #f8d7da"] strong {
+    color: #ef4444 !important;
+}
+
+.text-center div[style*="background-color: #f8d7da"] p {
+    color: #f87171 !important;
+}
+    </style>
 </head>
 
 <body>
