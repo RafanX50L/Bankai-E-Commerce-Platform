@@ -231,9 +231,14 @@
                                             <label for="editProductName">Product Name</label>
                                             <input type="text" class="form-control" id="editProductName" name="product_name" value="<%= product.product_name %>" required>
                                         </div>
-                                        <div class="form-group">
+                                         <div class="form-group">
                                             <label for="editCategory">Category</label>
-                                            <input type="text" class="form-control" id="editCategory" name="category" value="<%= product.category %>" required>
+                                            <select class="form-control" id="editCategory" name="category" required>
+                                                <option value="<%= product.category %>">Select a category</option>
+                                                <% categories.forEach(category => { %>
+                                                    <option value="<%= category.category_name %>"><%= category.category_name %></option>
+                                                <% }) %>                                                
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="editSubCategory">Sub Category</label>

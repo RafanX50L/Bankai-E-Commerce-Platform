@@ -806,9 +806,11 @@ const getproducts_editdetails = async (req,res)=>{
     try {
         const product_id = req.params.id
         const product = await Products.findById(product_id)
+        const  category = await Category.find();
         if (product) {
             res.render('admin/editProducts.ejs',{
-                product:product
+                product:product,
+                categories: category
             })
         }
     } catch (error) {
