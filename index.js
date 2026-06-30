@@ -2,18 +2,18 @@ const express = require("express");
 const session = require("express-session");
 const mongoose = require('mongoose');
 const path = require('path');
-const cron = require('node-cron'); 
+const cron = require('node-cron');
 const user_Controller = require('./controller/user_controller');
 require('dotenv').config();
 const passport = require('passport');
 require('./public/js/passport')
 
 
-mongoose.connect('mongodb+srv://rafanmu33:n65kkteG7kYHRF3G@cluster0.2wrcu.mongodb.net/E-commerce?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("MongoDB connected successfully"))
     .catch((error) => console.error('MongoDB connection error:', error));
 
-const Coupon = require('./model/coupon'); 
+const Coupon = require('./model/coupon');
 const Offers = require('./model/offer')
 
 const app = express();
@@ -41,13 +41,14 @@ const updateExpiredCoupons = async () => {
     try {
         const now = new Date();
         const updatedCoupons = await Coupon.updateMany(
-            { end_date: { $lt: now } , is_expired:false }, 
-            { $set: { is_expired: true } 
-        });
+            { end_date: { $lt: now }, is_expired: false },
+            {
+                $set: { is_expired: true }
+            });
         console.log(`Updated ${updatedCoupons.modifiedCount} coupons as expired.`);
         const updatedOffers = await Offers.updateMany(
-            { validUntil: { $lt: now } , is_expired:false }, 
-            { $set: { is_expired: true } } 
+            { validUntil: { $lt: now }, is_expired: false },
+            { $set: { is_expired: true } }
         );
         console.log(`Updated ${updatedOffers.modifiedCount} offers as expired.`);
 
@@ -73,16 +74,27 @@ const adminRoute = require('./router/admin_route');
 
 app.use('/user', userRoute);
 app.use('/admin', adminRoute);
-app.get('/',user_Controller.landing)
-app.get('/auth/google/callback', 
-    passport.authenticate('google', { 
-        successRedirect: '/user/success', 
+app.get('/', user_Controller.landing)
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/user/success',
         failureRedirect: '/user/failure'
     })
 );
+app.get('/products/:filename', (req, res) => {
+    const filename = req.params.filename;
+    const localPath = path.join(__dirname, 'public', 'products', filename);
+    if (require('fs').existsSync(localPath)) {
+        return res.sendFile(localPath);
+    }
+    const s3BucketUrl = `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/products/${filename}`;
+    res.redirect(s3BucketUrl);
+});
+
 app.get('*', (req, res) => {
     res.render('user/404.ejs');
 });
-app.listen(3000, () => {
-    console.log("Server is running on localhost:3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
